@@ -9,7 +9,7 @@
     "build": "rollup -c",
     "dev": "rollup -c -w",
     "pretest": "npm run build",
-    "prepare": "npm run build",
+    "prepare": "npm run build && npm run doc",
     "test": "echo \"Error: no test specified\" && exit 1",
     "doc": "npx typedoc --excludePrivate --exclude node_modules --target ES6 --ignoreCompilerErrors --name 'Mega Cache' --excludeNotExported --inputFiles ./src/index.ts --mode file --out docs --gitRemote https://github.com/mintere/mega-cache-node"
   },
@@ -26,7 +26,7 @@
   "bugs": {
     "url": "https://github.com/mintere/mega-cache-node/issues"
   },
-  "homepage": "https://github.com/mintere/mega-cache-node#readme",
+  "homepage": "https://mintere.github.io/mega-cache-node",
   "devDependencies": {
     "@types/cacache": "^12.0.1",
     "@types/lockfile": "^1.0.1",

@@ -74,6 +74,7 @@
 				<pre><code class="language-sh">npm i --save mega-cache</code></pre>
 				<p>or</p>
 				<pre><code class="language-sh">yarn add mega-cache</code></pre>
+				<p><a href="https://mintere.github.io/mega-cache-node/">Documentation</a>.</p>
 				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
 					<h2>Usage</h2>
 				</a>
@@ -99,7 +100,11 @@
 
 cache.get(<span class="hljs-string">"test"</span>) <span class="hljs-comment">//=&gt; Buffer, Prints "Loading Key"</span>
 cache.get(<span class="hljs-string">"test"</span>) <span class="hljs-comment">//=&gt; Buffer</span>
-cache.get(<span class="hljs-string">"test-1"</span>) <span class="hljs-comment">//=&gt; Buffer, Prints "Loading Key"</span></code></pre>
+cache.get(<span class="hljs-string">"test-1"</span>) <span class="hljs-comment">//=&gt; Buffer, Prints "Loading Key"</span>
+
+
+cache.close() <span class="hljs-comment">// You should do this in order to ensure cache files are removed.</span></code></pre>
+				<p>There&#39;s a whole lot more - read the <a href="https://mintere.github.io/mega-cache-node/">documentation</a>.</p>
 				<a href="#license" id="license" style="color: inherit; text-decoration: none;">
 					<h2>License</h2>
 				</a>

@@ -17,6 +17,8 @@ or
 yarn add mega-cache
 ```
 
+[Documentation](https://mintere.github.io/mega-cache-node/).
+
 ## Usage
 
 You'll probably want to use the `MegaCache` - it's the flagship cache of the library, and for good reason.
@@ -46,7 +48,12 @@ const cache = new MegaCache({
 cache.get("test") //=> Buffer, Prints "Loading Key"
 cache.get("test") //=> Buffer
 cache.get("test-1") //=> Buffer, Prints "Loading Key"
+
+
+cache.close() // You should do this in order to ensure cache files are removed.
 ```
+
+There's a whole lot more - read the [documentation](https://mintere.github.io/mega-cache-node/).
 
 ## License
 
