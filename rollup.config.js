@@ -5,7 +5,10 @@ export default [
 		input: 'src/index.ts',
 		external: [
 			"megahash",
-			"fs"
+			"fs",
+			"path",
+			"util",
+			"cacache"
 		],
 		output: [
 			{ format: 'es', file: "dist/index.mjs" },

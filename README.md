@@ -17,46 +17,35 @@ or
 yarn add mega-cache
 ```
 
-## Caches
+## Usage
 
+You'll probably want to use the `MegaCache` - it's the flagship cache of the library, and for good reason.
+The `MegaCache` caches in both memory and disk and automatically takes care of expiring the least recently
+used entries.
 
-### MemCacheLRUBinning
+Values must be `Buffer`s. 
 
-An in-memory cache designed to somewhat mimick a least-recently used strategy but with O(1) reads and writes.
+Keys must be `string`s or `Buffer`s.
 
-The first priority of this cache method is to ensure memory usage stays below a
-configurable maximum.
+```ts
+import {MegaCache, cacheSource, MiB} from "mega-cache";
 
-The cache contains three bins, a `protectedBin`, `writableBin`, and `frozenBin`. 
-Each is a [`MegaHash`][megahash] which stores large blobs outside of V8's heap.
+const source = cacheSource(async (key) => {
+  console.log("loading key...");
+  return Buffer.from("*".repeat(10 * MiB))
+}); 
 
-When writing to the cache, we first check to make sure there is room (`maxBinSize`).
-If there is not enough space, we rotate the bins before setting the value.
+const cache = new MegaCache({
+  source: source,
+  maxMemoryDataSize: 25 * MiB, // The maximum amount of RAM to use for caching.
+  cacheDir: ".cache",          // Which directory to use for disk cache.
+  maxFSBinSize: 60 * MiB,      // Use up-to 3x this amount of disk space.
+  maxFSEntries: 10,            // Use up-to 3x this number of files.
+});
 
-When reading the cache, we first look for the value in the protected bin.
-If the key is in the protected bin, return the value, otherwise check the writable bin.
-If the key is in the writable bin, return the value, otherwise check the frozen bin.
-If the key is in the frozen bin, move the value to the protected bin and return the value
-Otherwise, returns undefined.
-
-Rotates are O(1), clearing is O(n) and scheduled for the nextTick after rotation.
-During a rotate:
-- the `frozenBin` is scheduled to be cleared in the nextTick (unless it is garbage collected by node before then)
-- the `writableBin` becomes the `frozenBin`
-- the `protectedBin` becomes the `writableBin`
-
-```js
-import { MemCacheLRUBinning, toMebibytes } from "mega-cache";
-
-const maxBinSize = toMebibytes(256); // The cache can store upto 2 times this amount, and potentially peak at 3 times prior to GC
-const minWritablePortion = 0.2; // What portion of the writable bin should be reserved for new data
-
-let cache = new MemCacheLRUBinning(
-  maxBinSize, // defaults to 50MiB
-  minWritablePortion // defaults to 0.2
-);
-cache.set("key", Buffer.from("value"));
-cache.get("key").toString(); //=> "value"
+cache.get("test") //=> Buffer, Prints "Loading Key"
+cache.get("test") //=> Buffer
+cache.get("test-1") //=> Buffer, Prints "Loading Key"
 ```
 
 ## License

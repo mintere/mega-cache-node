@@ -1,6 +1,6 @@
 {
   "name": "mega-cache",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "A speedy extensible library for caching large blobs in memory and on disk",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -10,7 +10,8 @@
     "dev": "rollup -c -w",
     "pretest": "npm run build",
     "prepare": "npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "doc": "npx typedoc --excludePrivate --exclude node_modules --target ES6 --ignoreCompilerErrors --name 'Mega Cache' --excludeNotExported --inputFiles ./src/index.ts --mode file --out docs --gitRemote https://github.com/mintere/mega-cache-node"
   },
   "repository": {
     "type": "git",
@@ -27,13 +28,17 @@
   },
   "homepage": "https://github.com/mintere/mega-cache-node#readme",
   "devDependencies": {
+    "@types/cacache": "^12.0.1",
+    "@types/lockfile": "^1.0.1",
     "@types/node": "^13.11.1",
     "@wessberg/rollup-plugin-ts": "^1.2.24",
     "rollup": "^2.6.1",
     "tslib": "^1.11.1",
-    "typescript": "^3.8.3"
+    "typescript": "^3.8.3",
+    "typedoc": "^0.17.4"
   },
   "dependencies": {
+    "cacache": "^15.0.0",
     "megahash": "^1.0.3"
   }
 }
