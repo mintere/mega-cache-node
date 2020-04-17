@@ -1,7 +1,7 @@
 # Mega Cache
  
 A speedy & extensible library designed for caching large numbers of large blobs in memory and on disk. 
-Used heavily in production by Mintere for serving web content at scale.
+Used heavily in production by [Mintere](https://mintere.com) for serving web content at scale.
 
 Based on jhuckaby's [megahash] - data is stored off the the v8 heap.
 
