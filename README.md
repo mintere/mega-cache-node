@@ -22,7 +22,7 @@ yarn add mega-cache
 
 ### MemCacheLRUBinning
 
-An in-memory cache designed to mimick LRU but with O(1) reads and writes.
+An in-memory cache designed to somewhat mimick a least-recently used strategy but with O(1) reads and writes.
 
 The first priority of this cache method is to ensure memory usage stays below a
 configurable maximum.
