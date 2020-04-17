@@ -38,7 +38,8 @@ Otherwise, returns undefined.
 
 Rotates are O(1), clearing is O(n) and scheduled for the nextTick after rotation.
 During a rotate:
-- the frozenBin is scheduled to be cleared in the nextTick (unless it is garbage collected before then- the protectedBin becomes the writableBin
+- the frozenBin is scheduled to be cleared in the nextTick (unless it is garbage collected before then
+- the protectedBin becomes the writableBin
 - the writableBin becomes the frozenBin
 
 ```js
