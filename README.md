@@ -27,5 +27,5 @@ import { MemCacheLRUBinning } from "mega-cache";
 
 let cache = new MemCacheLRUBinning();
 cache.set("key", Buffer.from("value"));
-cache.get("test").toString(); //=> "value"
+cache.get("key").toString(); //=> "value"
 ```
