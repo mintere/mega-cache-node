@@ -39,8 +39,8 @@ Otherwise, returns undefined.
 Rotates are O(1), clearing is O(n) and scheduled for the nextTick after rotation.
 During a rotate:
 - the `frozenBin` is scheduled to be cleared in the nextTick (unless it is garbage collected by node before then)
-- the `protectedBin` becomes the `writableBin`
 - the `writableBin` becomes the `frozenBin`
+- the `protectedBin` becomes the `writableBin`
 
 ```js
 import { MemCacheLRUBinning, toMebibytes } from "mega-cache";
