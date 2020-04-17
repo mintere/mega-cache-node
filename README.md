@@ -24,6 +24,9 @@ yarn add mega-cache
 
 An in-memory cache designed to mimick LRU but with O(1) reads and writes.
 
+The first priority of this cache method is to ensure memory usage stays below a
+configurable maximum.
+
 The cache contains three bins, a `protectedBin`, `writableBin`, and `frozenBin`. 
 Each is a [`MegaHash`][megahash] which stores large blobs outside of V8's heap.
 
