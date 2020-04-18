@@ -53,7 +53,7 @@ cache.get("test-1") //=> Buffer, Prints "Loading Key"
 cache.close() // You should do this in order to ensure cache files are removed.
 ```
 
-While we recommend the `MegaCache` for most use-cases, the library is extremely versatile. You should read the [documentation](https://mintere.github.io/mega-cache-node/).
+While we recommend the `MegaCache` for most use-cases, the library is has many configurable options (for example, you can use only the in-memory cache). Read about them in the [documentation](https://mintere.github.io/mega-cache-node/).
 
 ## License
 
